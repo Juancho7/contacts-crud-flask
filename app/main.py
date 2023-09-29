@@ -20,7 +20,6 @@ def index():
     cursor.execute("SELECT * FROM contacts")
     contacts_data = cursor.fetchall()
     cursor.close()
-    print(contacts_data)
     return render_template("index.html", contacts=contacts_data)
 
 
@@ -30,7 +29,6 @@ def add_contact():
         fullname = request.form["fullname"]
         phone = request.form["phone"]
         email = request.form["email"]
-        print(fullname, phone, email, "Prueba")
         try:
             cursor = mysql.connection.cursor()
             cursor.execute(
@@ -42,17 +40,38 @@ def add_contact():
         except Exception as e:
             raise e
 
-    return "Add contact"
+
+@app.route("/edit/<id>", methods=["POST", "GET"])
+def get_contact(id):
+    cursor = mysql.connection.cursor(DictCursor)
+    cursor.execute("SELECT * FROM contacts WHERE id = %s", (id))
+    contact_data = cursor.fetchone()
+    cursor.close()
+    print(contact_data)
+    return render_template("edit-contact.html", contact=contact_data)
 
 
-@app.route("/edit")
-def edit_contact():
-    return "Edit contact"
+@app.route("/update/<id>", methods=["POST"])
+def update_contact(id):
+    if request.method == "POST":
+        fullname = request.form["fullname"]
+        phone = request.form["phone"]
+        email = request.form["email"]
+        cursor = mysql.connection.cursor()
+        cursor.execute(
+            "UPDATE contacts SET fullname = %s, phone = %s, email = %s WHERE id = %s",
+            (fullname, phone, email, id),
+        )
+        mysql.connection.commit()
+        return redirect(url_for("index"))
 
 
-@app.route("/delete")
-def delete_contact():
-    return "Delete contact"
+@app.route("/delete/<id>", methods=["POST", "GET"])
+def delete_contact(id):
+    cursor = mysql.connection.cursor()
+    cursor.execute("DELETE FROM contacts WHERE id = %s", (id))
+    mysql.connection.commit()
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":

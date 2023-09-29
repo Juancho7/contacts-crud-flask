@@ -31,10 +31,10 @@
           <td>{{contact.phone}}</td>
           <td>{{contact.email}}</td>
           <td>
-            <a href="#">Edit</a>
+            <a href="/edit/{{contact.id}}">Edit</a>
           </td>
           <td>
-            <a href="#">Delete</a>
+            <a href="/delete/{{contact.id}}">Delete</a>
           </td>
         </tr>
         {% endfor %}
