@@ -1,44 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index</title>
-  </head>
-  <body>
-    <form action="/add" method="POST">
-      <input type="text" name="fullname" placeholder="Fullname" />
-      <input type="number" name="phone" placeholder="Phone" />
-      <input type="email" name="email" placeholder="Email" />
-      <input type="submit" value="Save" />
-    </form>
+{% extends "layout.html" %}
+<!-- fi -->
+{% block title %}Index{% endblock %}
+<!-- fi -->
+{% block body %}
+<form action="/add" method="POST" class="">
+  <input type="text" name="fullname" placeholder="Fullname" />
+  <input type="number" name="phone" placeholder="Phone" />
+  <input type="email" name="email" placeholder="Email" />
+  <input type="submit" value="Save" />
+</form>
 
-    <table>
-      <thead>
-        <tr>
-          <td>Id</td>
-          <td>Fullname</td>
-          <td>Phone</td>
-          <td>Email</td>
-          <td>Manage</td>
-        </tr>
-      </thead>
-      <tbody>
-        {% for contact in contacts %}
-        <tr>
-          <td>{{contact.id}}</td>
-          <td>{{contact.fullname}}</td>
-          <td>{{contact.phone}}</td>
-          <td>{{contact.email}}</td>
-          <td>
-            <a href="/edit/{{contact.id}}">Edit</a>
-          </td>
-          <td>
-            <a href="/delete/{{contact.id}}">Delete</a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </body>
-</html>
+<table>
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>Fullname</td>
+      <td>Phone</td>
+      <td>Email</td>
+      <td>Manage</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contacts %}
+    <tr>
+      <td>{{contact.id}}</td>
+      <td>{{contact.fullname}}</td>
+      <td>{{contact.phone}}</td>
+      <td>{{contact.email}}</td>
+      <td>
+        <a href="/edit/{{contact.id}}">Edit</a>
+      </td>
+      <td>
+        <a href="/delete/{{contact.id}}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
