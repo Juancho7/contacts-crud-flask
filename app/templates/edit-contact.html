@@ -9,10 +9,24 @@
 >{% endblock %}
 <!-- fi -->
 {% block body %}
+<p>Please write down the new data for the contact "{{contact.fullname}}"</p>
 <form action="/update/{{contact.id}}" method="POST">
-  <input type="text" name="fullname" placeholder="Fullname" />
-  <input type="number" name="phone" placeholder="Phone" />
-  <input type="email" name="email" placeholder="Email" />
+  <label for="fullname">Fullname</label>
+  <input
+    type="text"
+    name="fullname"
+    id="fullname"
+    placeholder="{{contact.fullname}}"
+  />
+  <label for="phone">Phone</label>
+  <input
+    type="number"
+    name="phone"
+    id="phone"
+    placeholder="{{contact.phone}}"
+  />
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" placeholder="{{contact.email}}" />
   <input type="submit" value="Save" />
 </form>
 {% endblock %}
