@@ -69,7 +69,7 @@ def update_contact(id):
 @app.route("/delete/<id>", methods=["POST", "GET"])
 def delete_contact(id):
     cursor = mysql.connection.cursor()
-    cursor.execute("DELETE FROM contacts WHERE id = %s", (id))
+    cursor.execute("DELETE FROM contacts WHERE id = %s", (id,))
     mysql.connection.commit()
     return redirect(url_for("index"))
 

@@ -6,7 +6,7 @@
     <title>{% block title %}{% endblock%}</title>
     <link rel="stylesheet" href="../static/css/styles.css" />
   </head>
-  <body class="">
+  <body>
     <header
       class="flex justify-between items-center lg:justify-normal lg:gap-x-20 p-3 pl-5 lg:pl-20 text-lg font-semibold text-slate-100 bg-slate-800"
     >
@@ -14,6 +14,8 @@
       <!-- fi -->
       {% block home %}{% endblock %}
     </header>
-    <main class="p-10 pl-20">{% block body %}{% endblock %}</main>
+    <main class="p-5 overflow-hidden text-slate-800">
+      {% block body %}{% endblock %}
+    </main>
   </body>
 </html>

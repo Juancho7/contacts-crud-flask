@@ -1,16 +1,104 @@
 {% extends "layout.html" %}
 <!-- fi -->
-{% block title %}Index{% endblock %}
+{% block title %}Contacts Manage{% endblock %}
 <!-- fi -->
 {% block body %}
-<form action="/add" method="POST" class="">
-  <input type="text" name="fullname" placeholder="Fullname" />
-  <input type="number" name="phone" placeholder="Phone" />
-  <input type="email" name="email" placeholder="Email" />
-  <input type="submit" value="Save" />
+<p class="mb-4 lg:ml-16">Add a new contact! &#58;&#41;</p>
+
+<form action="/add" method="POST" class="lg:ml-16 lg:w-3/4 flex flex-col">
+  <label for="fullname" class="mb-1">Fullname</label>
+  <input
+    type="text"
+    name="fullname"
+    id="fullname"
+    placeholder="Fullname"
+    class="p-1 input-text"
+  />
+  <label for="phone" class="mb-1">Phone</label>
+  <input
+    type="number"
+    name="phone"
+    id="phone"
+    placeholder="Phone"
+    class="p-1 input-text"
+  />
+  <label for="fullname" class="mb-1">Email</label>
+  <input
+    type="email"
+    name="email"
+    id="email"
+    placeholder="Email"
+    class="p-1 input-text"
+  />
+  <input
+    type="submit"
+    value="Save"
+    class="my-4 py-2 px-6 self-center bg-slate-700 text text-slate-100 hover:bg-slate-100 rounded-lg hover:text-slate-800 transition-colors"
+  />
 </form>
 
-<table>
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th
+          scope="col"
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Id
+        </th>
+        <th
+          scope="col"
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Fullname
+        </th>
+        <th
+          scope="col"
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Phone
+        </th>
+        <th
+          scope="col"
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Email
+        </th>
+        <th
+          scope="col"
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Manage
+        </th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      {% for contact in contacts %}
+      <tr>
+        <td class="px-6 py-4 whitespace-nowrap">{{contact.id}}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{contact.fullname}}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{contact.phone}}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{contact.email}}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+          <a
+            href="/edit/{{contact.id}}"
+            class="text-indigo-600 hover:text-indigo-900"
+            >Edit</a
+          >
+          <a
+            href="/delete/{{contact.id}}"
+            class="text-red-600 hover:text-red-900 ml-2"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- <table>
   <thead>
     <tr>
       <td>Id</td>
@@ -36,5 +124,6 @@
     </tr>
     {% endfor %}
   </tbody>
-</table>
+</table> -->
+
 {% endblock %}

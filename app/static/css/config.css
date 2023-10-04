@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .input-text {
+    @apply border-2 border-slate-100 focus:border-slate-700 rounded-lg outline-none transition-colors;
+  }
+}
