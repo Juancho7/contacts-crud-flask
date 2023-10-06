@@ -2,7 +2,7 @@
 
 ![Screenshot](./docs/Screenshot.JPG 'Screenshot')
 
-Instalation
+## Instalation
 
 ```
 git clone https://github.com/Juancho7/contacts-crud-flask.git
