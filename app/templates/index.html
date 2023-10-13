@@ -5,37 +5,8 @@
 {% block body %}
 <p class="mb-4 lg:ml-16">Add a new contact! &#58;&#41;</p>
 
-<form action="/add" method="POST" class="lg:ml-16 lg:w-3/4 flex flex-col">
-  <label for="fullname" class="mb-1">Fullname</label>
-  <input
-    type="text"
-    name="fullname"
-    id="fullname"
-    placeholder="Fullname"
-    class="p-1 input-text"
-  />
-  <label for="phone" class="mb-1">Phone</label>
-  <input
-    type="number"
-    name="phone"
-    id="phone"
-    placeholder="Phone"
-    class="p-1 input-text"
-  />
-  <label for="fullname" class="mb-1">Email</label>
-  <input
-    type="email"
-    name="email"
-    id="email"
-    placeholder="Email"
-    class="p-1 input-text"
-  />
-  <input
-    type="submit"
-    value="Save"
-    class="my-4 py-2 px-6 self-center bg-slate-700 text text-slate-100 hover:bg-slate-100 rounded-lg hover:text-slate-800 transition-colors"
-  />
-</form>
+<!-- Component add_contact_form -->
+{% include 'components/add_contact_form.html' %}
 
 <div class="overflow-x-auto">
   <table class="min-w-full divide-y divide-gray-200">

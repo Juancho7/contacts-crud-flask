@@ -48,7 +48,7 @@ def get_contact(id):
     contact_data = cursor.fetchone()
     cursor.close()
     print(contact_data)
-    return render_template("edit-contact.html", contact=contact_data)
+    return render_template("edit_contact.html", contact=contact_data)
 
 
 @app.route("/update/<id>", methods=["POST"])

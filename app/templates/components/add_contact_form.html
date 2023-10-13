@@ -1,0 +1,35 @@
+<form action="/add" method="POST" class="lg:ml-16 lg:w-3/4 flex flex-col">
+  <label for="fullname" class="mb-1">Fullname</label>
+  <input
+    type="text"
+    name="fullname"
+    id="fullname"
+    placeholder="Fullname"
+    maxlength="255"
+    class="p-1 input-text"
+    required
+  />
+  <label for="phone" class="mb-1">Phone</label>
+  <input
+    type="number"
+    name="phone"
+    id="phone"
+    placeholder="Phone"
+    class="p-1 input-text"
+    required
+  />
+  <label for="fullname" class="mb-1">Email</label>
+  <input
+    type="email"
+    name="email"
+    id="email"
+    placeholder="Email"
+    class="p-1 input-text"
+    required
+  />
+  <input
+    type="submit"
+    value="Save"
+    class="my-4 py-2 px-6 self-center font-medium text-slate-100 bg-slate-700 hover:bg-slate-100 rounded-lg hover:text-slate-800 hover:cursor-pointer transition-colors"
+  />
+</form>

@@ -1,19 +1,4 @@
-{% extends "layout.html" %}
-<!-- fi -->
-{% block title %}Edit contact {{contact.fullname}}{% endblock %}
-<!-- fi -->
-{% block home %}
-<a
-  href="/"
-  class="p-2 text-base bg-slate-700 hover:bg-slate-100 rounded-lg hover:text-slate-800 transition-colors"
-  >See Contacts
-</a>
-{% endblock %}
-<!-- fi -->
-{% block body %}
-<p class="mb-4 lg:ml-16">
-  Contact: <strong class="font-semibold">{{contact.fullname}}</strong>
-</p>
+{% macro edit_contact_form(contact) %}
 <form
   action="/update/{{contact.id}}"
   method="POST"
@@ -26,6 +11,7 @@
     id="fullname"
     placeholder="{{contact.fullname}}"
     class="p-1 input-text"
+    required
   />
   <label for="phone" class="mb-1">Phone</label>
   <input
@@ -34,6 +20,7 @@
     id="phone"
     placeholder="{{contact.phone}}"
     class="p-1 input-text"
+    required
   />
   <label for="email" class="mb-1">Email</label>
   <input
@@ -42,11 +29,12 @@
     id="email"
     placeholder="{{contact.email}}"
     class="p-1 input-text"
+    required
   />
   <input
     type="submit"
     value="Save"
-    class="my-4 py-2 px-6 self-center bg-slate-700 text text-slate-100 rounded-lg"
+    class="my-4 py-2 px-6 self-center bg-slate-700 font-medium text-slate-100 hover:bg-slate-100 hover:text-slate-800 hover:cursor-pointer transition-colors rounded-lg"
   />
 </form>
-{% endblock %}
+{% endmacro %}
